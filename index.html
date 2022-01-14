@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./btn3.css">
+	<title>JSON Converter</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="form__group field">
+			<textarea rows="28" cols="15" type="input" class="form__field" placeholder="Enter String to Convert" id='name' value="" required></textarea>
+			<label for="name" class="form__label" id="label">In-House JSON Converter</label>
+		</div>
+		<button id="btn">
+			<p id="btnText">Submit</p>
+			<div class="check-box">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+					<path fill="transparent" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+				</svg>
+			</div>
+		</button>
+	</div>
+	<script type="text/javascript">
+		function convertToJSON(string) {
+			// Adding comma whenever there's a new line
+			let newStr = string.replace(/\n/g, ",")
+
+			return JSON.stringify(
+				eval('({' + newStr + '})'),	// Converting simple string to JS Object
+				null,
+				2
+			)
+		}
+		const btn = document.querySelector("#btn");
+		const btnText = document.querySelector("#btnText");
+		const inputFld = document.querySelector("#name");
+		const label = document.querySelector("#label");
+		
+		btn.onclick = () => {
+			btnText.innerHTML = "Thanks";
+			btn.classList.add("active");
+			const convertedValue = convertToJSON(inputFld.value);
+			label.innerHTML = "Converted JSON, Copy-Paste-Enjoy";
+			inputFld.value = convertedValue;
+		};
+	</script>
+
+</body>
+
+</html>
