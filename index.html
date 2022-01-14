@@ -45,6 +45,7 @@
 			btn.classList.add("active");
 			const convertedValue = convertToJSON(inputFld.value);
 			label.innerHTML = "Converted JSON, Copy-Paste-Enjoy";
+			inputFld.disabled = true;
 			inputFld.value = convertedValue;
 		};
 	</script>
