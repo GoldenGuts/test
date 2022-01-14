@@ -35,6 +35,7 @@
 	transition: 0.3s;
 	font-size: 1rem;
 	color: #9b9b9b;
+	padding-left: 0px;
 }
 
 .form__field:focus {
