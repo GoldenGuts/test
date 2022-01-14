@@ -12,7 +12,8 @@
 <body>
 	<div class="container">
 		<div class="form__group field">
-			<textarea rows="28" cols="15" type="input" class="form__field" placeholder="Enter String to Convert" id='name' value="" required></textarea>
+			<textarea rows="28" cols="15" type="input" class="form__field"
+				placeholder="Enter String to Convert" id='name' value="" required></textarea>
 			<label for="name" class="form__label" id="label">In-House JSON Converter</label>
 		</div>
 		<button id="btn">
@@ -39,14 +40,21 @@
 		const btnText = document.querySelector("#btnText");
 		const inputFld = document.querySelector("#name");
 		const label = document.querySelector("#label");
-		
+
 		btn.onclick = () => {
-			btnText.innerHTML = "Thanks";
-			btn.classList.add("active");
-			const convertedValue = convertToJSON(inputFld.value);
-			label.innerHTML = "Converted JSON, Copy-Paste-Enjoy";
-			inputFld.disabled = true;
-			inputFld.value = convertedValue;
+			try {
+				const convertedValue = convertToJSON(inputFld.value);
+				btnText.innerHTML = "Thanks";
+				btn.classList.add("active");
+				label.innerHTML = "Converted JSON, Copy-Paste-Enjoy";
+				inputFld.disabled = true;
+				inputFld.value = convertedValue;
+			} catch (e) {
+				label.innerHTML = "Invalid Data, Please Enter Data from Admin Panel Console directly";
+				label.style.color = 'red';
+				inputFld.style.color = 'red';
+				inputFld.disabled = true;
+			}
 		};
 	</script>
 
