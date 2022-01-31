@@ -44,9 +44,10 @@
 		btn.onclick = () => {
 			try {
 				const convertedValue = convertToJSON(inputFld.value);
+				navigator.clipboard.writeText(convertedValue);
 				btnText.innerHTML = "Thanks";
 				btn.classList.add("active");
-				label.innerHTML = "Converted JSON, Copy-Paste-Enjoy";
+				label.innerHTML = "Converted JSON, Copied To Clipboard";
 				inputFld.disabled = true;
 				inputFld.value = convertedValue;
 			} catch (e) {
